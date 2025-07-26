@@ -8,12 +8,12 @@ in the ec2 terminal, run your code
 ## Pitch
 Food Bridge is an intelligent web application that connects food
 banks with restaurants to optimize food distribution and reduce
-waste. The platform leverages AI/LLM technology, geospatial 
+waste. The platform leverages AI, geospatial 
 analysis, and semantic search to create an efficient food 
 sharing ecosystem.
 
 ## Project Overview
-Food Bridge addresses a critical challenge in our food 
+Food Bridge addresses a notable challenge in our food 
 distribution system by leveraging artificial intelligence and 
 geospatial technology to create meaningful connections between 
 food providers and those in need.
@@ -51,10 +51,6 @@ that might otherwise never occur. This approach transforms food
 recovery from a cumbersome process into a streamlined operation 
 that benefits communities while reducing waste.
 
-The result is a platform that feels both sophisticated and 
-accessible—one that harnesses advanced technology to solve real-
-world problems in food security and sustainability.
-
 ## Key Features
 
 ### AI-Powered Search Agent
@@ -68,32 +64,39 @@ The platform uses a PostgreSQL database.
 ## User Experience
 
 ### For Food Banks
-1. Natural Language Search: "I need fresh produce for 50 
-families"
-2. AI-Powered Results: System returns semantically relevant food 
-listings
-3. Distance-Optimized: Results sorted by proximity for efficient 
-pickup
-4. Request Management: Track requests and coordinate with 
-providers
+Food banks benefit from an intuitive search experience that 
+mirrors natural conversation, allowing coordinators to simply 
+state their needs. The AI-
+powered search engine processes these requests to deliver relevant 
+food listings that match specific requirements. Results are 
+automatically sorted by geographic proximity, enabling food 
+banks to prioritize nearby donations for more efficient pickup 
+routes and reduced transportation costs. The platform also 
+provides comprehensive request management tools, allowing 
+organizations to track their submissions and maintain clear 
+communication channels with food providers throughout the 
+coordination process.
 
-### For Food Providers (Restaurants)
-1. Easy Listing Creation: Add food items with descriptions and 
-quantities
-2. Request Management: View and manage incoming requests from 
-food banks
-3. Geographic Reach: Automatically connected with nearby food 
-banks
+### For Food Providers (such as restaurants, bakeries, cafes)
+Food providers enjoy a streamlined listing process that allows 
+them to quickly add available food items with detailed 
+descriptions and quantities, makign it a stress free process. The platform's request 
+management system provides restaurants with clear visibility 
+into incoming requests from food banks, enabling them to review,
+approve, and coordinate pickups efficiently. Through automatic 
+geographic matching, restaurants are connected with 
+nearby food banks within their service area, ensuring that 
+surplus food reaches organizations that can realistically 
+collect it while maximizing the impact of their donations within
+the local community.
 
 ## Tech Stack
 
 ### Backend
-• **Python Flask**: Web framework
-• **PostgreSQL**: database storage
-• **Google Maps API**: Geocoding and distance calculations
+python, PostgreSQL 
 
 ### Frontend
-
+streamlit
 
 ### AI/ML Components
 
@@ -107,11 +110,19 @@ database configuration:
 
 ## Additional features we hope to further develop in the future
 
-• **Multi-language Support**: Expand to support multiple 
-languages
-• **Dietary Restrictions**: AI understanding of dietary needs 
-and restrictions
-• **Demand Prediction**: ML models to predict food bank needs, depending on external context
+Future development plans include expanding the platform's 
+accessibility through multi-language support, enabling food 
+banks and restaurants from diverse communities to participate 
+more effectively in the food recovery network. The system will 
+incorporate advanced AI capabilities to understand and match 
+dietary restrictions and special nutritional requirements, 
+ensuring that food donations align with the specific needs of 
+different populations served by food banks. Additionally, 
+machine learning models will be developed to predict food bank 
+demand patterns based on external factors such as seasonal 
+variations, community events, and socioeconomic indicators, 
+allowing for more proactive food distribution planning and 
+improved resource allocation across the network.
 
 ### Enhanced Matching
 • Real-time updates of food availability
@@ -120,28 +131,40 @@ and restrictions
 
 ## Impact & Benefits
 
-### For Food Banks
-• **Reduced Search Time**: AI finds relevant food faster than 
-manual browsing
-• **Optimized Logistics**: Distance-based sorting minimizes 
-transportation costs
-• **Better Matching**: Semantic search finds food that meets 
-specific needs
+For Food Banks: The platform significantly reduces the time 
+coordinators spend searching for suitable donations by 
+leveraging AI to quickly identify relevant food items, 
+eliminating the need for manual browsing through extensive 
+listings. Distance-based sorting optimizes logistics operations 
+by prioritizing nearby food sources, directly reducing 
+transportation costs and enabling more efficient resource 
+allocation. The semantic search functionality ensures better 
+matching between available donations and specific organizational
+needs, helping food banks secure exactly the types of food 
+required for their programs and communities.
 
-### For Restaurants
-• **Simplified Donation Process**: Easy listing creation and 
-management
-• **Targeted Distribution**: Connect with food banks that need 
-specific items
-• **Waste Reduction**: Efficient redistribution of surplus food
+For Restaurants: Food providers benefit from a simplified 
+donation process that streamlines listing creation and ongoing 
+management, removing traditional barriers to participation in 
+food recovery initiatives. The platform enables targeted 
+distribution by connecting restaurants with food banks that 
+specifically need their available items, ensuring donations 
+reach organizations where they will have maximum impact. This 
+efficient redistribution system helps restaurants significantly 
+reduce food waste by creating reliable pathways for surplus 
+inventory to reach those in need rather than ending up in 
+landfills.
 
-### For Communities
-• **Reduced Food Waste**: Intelligent matching prevents food 
-from going to waste
-• **Improved Food Security**: Better distribution reaches more 
-people in need
-• **Environmental Impact**: Reduced transportation through 
-optimized routing
+For Communities: The intelligent matching system substantially 
+reduces overall food waste by ensuring surplus food finds 
+appropriate recipients before spoiling, creating a more 
+sustainable local food ecosystem. Improved food security results
+from better distribution networks that help nutritious meals 
+reach more people in need throughout the community. The platform
+'s optimized routing capabilities generate positive 
+environmental impact by minimizing unnecessary transportation, 
+reducing carbon emissions while maximizing the efficiency of 
+food recovery operations across the region.
 
 ## Conclusion
 

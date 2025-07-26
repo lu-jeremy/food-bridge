@@ -5,8 +5,6 @@ for each file, run this command: scp -i ~/.ssh/foodbridge.pem /path/file_name.py
 then run: ssh -i ~/.ssh/foodbridge.pem ec2-user@54.245.187.177
 in the ec2 terminal, run your code
 
-# food-bridge
-
 ## Pitch
 Food Bridge is an intelligent web application that connects food
 banks with restaurants to optimize food distribution and reduce

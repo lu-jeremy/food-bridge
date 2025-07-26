@@ -21,11 +21,7 @@ food providers and those in need.
 The platform's strength lies in its intuitive approach to search
 functionality. Rather than requiring users to navigate complex 
 databases or rigid category systems, food banks can simply 
-describe what they're looking for in natural language. When a 
-coordinator types "we need fresh vegetables for our weekend 
-distribution," the AI understands the context and intent, 
-delivering relevant results that match their specific 
-requirements.
+describe what they're looking for in natural language.  
 
 What sets Food Bridge apart is its practical consideration of 
 logistics. The system automatically prioritizes nearby 
@@ -47,9 +43,7 @@ By combining semantic search capabilities with geographic
 intelligence, Food Bridge creates a more responsive and 
 efficient ecosystem. The technology serves the practical needs 
 of both food providers and recipients, facilitating connections 
-that might otherwise never occur. This approach transforms food 
-recovery from a cumbersome process into a streamlined operation 
-that benefits communities while reducing waste.
+that might otherwise never occur.  
 
 ## Key Features
 

@@ -10,20 +10,38 @@ class SearchAgent:
         self.google_searcher = GoogleSearcher()
         self.conversation_history = []
     
-    def search_and_analyze(self, restaurant_query: str) -> str:
-        """Main method to search for restaurant info and analyze it"""
-        # First, let the LLM decide what to search for
-        initial_prompt = f"""
-        I need information about: {restaurant_query}
+    def search_and_analyze(self, user_query: str) -> str:
+        """Main method to search for restaurant info based on food needs or restaurant name"""
+        # Determine if this is a food type query or restaurant name query
+        food_keywords = ['sandwiches', 'pizza', 'burgers', 'salads', 'soup', 'bread', 'pastries', 'meals']
+        quantity_keywords = ['100', '50', '200', 'bulk', 'large quantity']
         
-        Please search for relevant information about this restaurant including:
-        - Official website and contact info
-        - Food donation policies
-        - Location and hours
-        - Any food bank partnerships
+        is_food_query = any(keyword in user_query.lower() for keyword in food_keywords + quantity_keywords)
         
-        Use the search tool to gather this information.
-        """
+        if is_food_query:
+            initial_prompt = f"""
+            I need to find restaurants that can provide: {user_query}
+            
+            Please search for restaurants that:
+            - Serve this type of food
+            - Could handle the requested quantity
+            - Have food donation programs
+            - Are accessible for food bank pickup
+            
+            Use the search tool to find relevant restaurants and their donation information.
+            """
+        else:
+            initial_prompt = f"""
+            I need information about: {user_query}
+            
+            Please search for relevant information about this restaurant including:
+            - Official website and contact info
+            - Food donation policies
+            - Location and hours
+            - Any food bank partnerships
+            
+            Use the search tool to gather this information.
+            """
         
         return self._get_response_with_tools(initial_prompt)
     
@@ -57,15 +75,16 @@ class SearchAgent:
                 tool_result = self._handle_tool_use(content_block)
                 # Send tool result back to LLM for analysis
                 analysis_prompt = f"""
-                Based on this search information about the restaurant:
+                Based on this search information:
                 
                 {tool_result}
                 
                 Please analyze and summarize:
-                1. Key restaurant details
-                2. Food donation opportunities
-                3. Contact information for food bank partnerships
-                4. Any existing charitable programs
+                1. Restaurants that match the food type/quantity requested
+                2. Restaurant locations and contact information
+                3. Food donation policies and procedures
+                4. Feasibility for the requested quantity
+                5. Pickup logistics and requirements
                 """
                 text += self._get_final_analysis(analysis_prompt)
         
@@ -94,11 +113,11 @@ class SearchAgent:
             print(f"Found {len(urls)} URLs: {urls}")
             
             search_results = f"Search results for '{query}':\n\n"
-            for url in urls[:3]:  # Limit to top 3 results
+            for url in urls[:5]:  # Limit to top 3 results
                 print(f"Scraping: {url}")
                 content = self.google_searcher.scrape_webpage(url)
                 if content:
-                    search_results += f"URL: {url}\nContent: {content[:500]}...\n\n"
+                    search_results += f"URL: {url}\nContent: {content}\n\n"
                 else:
                     print(f"No content from {url}")
             

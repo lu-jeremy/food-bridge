@@ -9,38 +9,33 @@ class GoogleSearcher:
         self.search_engine_id = SEARCH_ENGINE_ID
     
     def search(self, query: str, num_results: int = 5) -> list:
-        """Search Google and return list of URLs"""
+        """Search using Bing search which is less restrictive"""
         try:
-            url = f"https://www.googleapis.com/customsearch/v1"
-            params = {
-                'key': self.api_key,
-                'cx': self.search_engine_id,
-                'q': query,
-                'num': num_results
+            search_url = "https://www.bing.com/search"
+            params = {'q': query, 'count': num_results}
+            
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             }
             
-            print(f"Making request to: {url}")
-            print(f"With params: {params}")
-            
-            response = requests.get(url, params=params)
+            print(f"Searching Bing for: {query}")
+            response = requests.get(search_url, params=params, headers=headers)
             print(f"Response status: {response.status_code}")
             
-            data = response.json()
-            print(f"Response data keys: {data.keys()}")
-            
-            if 'error' in data:
-                print(f"API Error: {data['error']}")
-                return []
+            soup = BeautifulSoup(response.text, 'html.parser')
             
             urls = []
-            if 'items' in data:
-                for item in data['items']:
-                    urls.append(item['link'])
-                print(f"Found {len(urls)} URLs")
-            else:
-                print("No 'items' key in response")
+            # Bing uses different selectors
+            for link in soup.find_all('a', href=True):
+                href = link['href']
+                if href.startswith('http') and 'bing.com' not in href and 'microsoft.com' not in href:
+                    if len(urls) < num_results:
+                        urls.append(href)
+                        print(f"Found URL: {href}")
             
+            print(f"Total found {len(urls)} URLs: {urls}")
             return urls
+            
         except Exception as e:
             print(f"Search error: {e}")
             return []

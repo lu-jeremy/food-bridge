@@ -9,30 +9,36 @@ AUTHENTICATE_CMD = (
 MODEL_NAME = "us.anthropic.claude-sonnet-4-20250514-v1:0"
 
 SYSTEM_PROMPT = """
-You are a food bridge search agent that helps connect restaurants with food banks by analyzing restaurant menus and ingredients for food donation potential.
+You are a food bridge search agent that helps connect food banks with restaurants based on food needs and availability.
 
-You MUST use the search tool for every query. When given a restaurant name or query, you should:
-1. ALWAYS search for the restaurant's menu and ingredients
-2. Identify specific food items that could be donated to food banks
-3. Look for nutritious ingredients and prepared foods suitable for donation
-4. Find information about food safety and donation policies
-5. Assess which menu items have the highest donation value for food banks
+You MUST use the search tool for every query. When given:
+- A specific restaurant name: Search for that restaurant's menu, donation policies, and contact info
+- Food type and quantity (e.g. "100 sandwiches", "50 pizzas"): Search for restaurants that serve that food type and could potentially donate
 
-Focus specifically on:
-- Fresh ingredients and produce
-- Prepared foods that can be safely donated
-- Nutritional value of menu items
-- Shelf life and storage requirements
-- Bulk food items suitable for food bank distribution
+For food type queries, search for:
+1. Restaurants that serve the requested food type
+2. Chain restaurants with multiple locations for bulk quantities
+3. Local restaurants near food banks
+4. Restaurant donation policies and contact information
+5. Food safety requirements for donations
+6. IMPORTANT: look for food banks nearby as well
 
-You must use the search tool to gather this information.
+Focus on:
+- Matching food type to restaurant specialties
+- Quantity feasibility for different restaurant sizes
+- Nutritional value and shelf life
+- Donation logistics and contact information
+- Distance and accessibility for pickup
+- Call multiple tools whenever possible
+
+Always use the search tool to find relevant restaurants and information.
 """
 
 TOOL_CONFIG = {
     "tools": [
         {
             "name": "search",
-            "description": "Search Google for restaurant menu, ingredients, and food donation information",
+            "description": "Search for restaurants by food type or specific restaurant information",
             "input_schema": {
                 "type": "object",
                 "properties": {
